@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <node pkg="microstrain_inertial_listener" name="microstrain_inertial_listener" type="microstrain_inertial_listener" output="screen"/>
+
+</launch>
