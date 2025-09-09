@@ -12,11 +12,12 @@
 #define RAD2DEG 57.2957914
 #define DEG2RAD 0.01745329
 
-double control_period = 0.01;
-double control_time = 0.0;
+float control_period = 0.01;
+float control_time = 0.0, count1 = 0.0, count2 = 0.0;
+float displat_count1 = 0.,  displat_count2 = 0.; 
 
 Eigen::Quaterniond quaternion_;
-Eigen::Vector3d orientation_, angular_velocity_, linear_acceleration_;
+Eigen::Vector3d orientation_, angular_velocity_, linear_acceleration_, magnetometer;
 Eigen::Matrix3d rotation_matrix_;
 
 ros::Publisher p_imu_roll;
@@ -31,6 +32,12 @@ ros::Publisher p_imu_lin_acc_x;
 ros::Publisher p_imu_lin_acc_y;
 ros::Publisher p_imu_lin_acc_z;
 
+ros::Publisher p_imu_magneto_x;
+ros::Publisher p_imu_magneto_y;
+ros::Publisher p_imu_magneto_z;
+
+ros::Publisher p_imu_magneto_yaw;
+
 std_msgs::Float64 m_imu_roll;
 std_msgs::Float64 m_imu_pitch;
 std_msgs::Float64 m_imu_yaw;
@@ -42,6 +49,12 @@ std_msgs::Float64 m_imu_ang_vel_z;
 std_msgs::Float64 m_imu_lin_acc_x;
 std_msgs::Float64 m_imu_lin_acc_y;
 std_msgs::Float64 m_imu_lin_acc_z;
+
+std_msgs::Float64 m_imu_magneto_x;
+std_msgs::Float64 m_imu_magneto_y;
+std_msgs::Float64 m_imu_magneto_z;
+
+std_msgs::Float64 m_imu_magneto_yaw;
 
 enum Pos
 {
